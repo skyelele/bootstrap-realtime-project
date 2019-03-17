@@ -10,6 +10,7 @@
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.js"></script>
 </head>
     <body>
         <nav class="navbar navbar-expand-smj navbar-light" style="background-color: rgba(236, 233, 233, 0.6)">
@@ -137,10 +138,123 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 mx-2 founded font-weight-bold" style="background-color:#718d97; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">SUPPLIER COMPLIANCE STATS</div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-lg-4 border-right">
+                                    <div class="text-center mb-0">
+                                        <h4>Suppliers</h4>
+                                    </div>
+                                    <div class="mt-0 pb-1">
+                                        <canvas id="suppliersChart" width="100" height="100"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col-l-8 mt-1">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td colspan="2"></td>
+                                            <td>
+                                                <div class="text-center">
+                                                    <h6 class="m-0" style="color:#aaa3a3">
+                                                        5-year Trend
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Spending</td>
+                                            <th>$2,113,507</th>
+                                            <td>
+                                                <canvas id="totalSpendingChart" width="100" width="20"></canvas>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Savings</td>
+                                            <th>$96,788</th>
+                                            <td>
+                                                <canvas id="savingsChart" width="100" width="20"></canvas>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Foregone Savings</td>
+                                            <th>$52,546</th>
+                                            <td>
+                                                <canvas id="foregoneSavingsChart" width="100" width="20"></canvas>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3" style="background-color:#e0dada">Third</div> 
             </div>
         </div>
+        <script>
+        // Chart 1
+        var ctx = document.getElementById("suppliersChart");
+        var data = {
+            datasets: [{
+                data: [ 61, 39 ],
+                backgroundColor: [ "a0f47f", "f7838d" ]
+            }],
+            labels: [ "61% Contracted Suppliers", "39% Unlisted Suppliers" ]
+        };
+        var myDoughnutChart1 = new Chart(ctx, { type: 'doughtnut', data: data, options: options });
+
+        // Chart 2
+        var ctx2 = document.getELementById("totalSpendingChart");
+        var data2 = {
+            datasets: [{
+                label: "Spending",
+                data: [ 10, 10, 8, 12, 11 ],
+                borderColor: "#e8144d"
+            }],
+            labels: [ "2015", "2016", "2017", "2018", "2019" ]
+        };
+        var LineChart1 = new Chart(ctx2, { type: "line", data: data2, options: {
+            pointStyle: "circle",
+            legend: { legend: false },
+            scales: { yAxes: [ { display: false, gridLines: { display: false  }], xAxes: [ { display: flase, gridLines: { display: false } }]} 
+        } });
+
+        // Chart 3
+
+        var ctx3 = document.getElementById("savingsChart");
+        var data3 = {
+            datasets: [{
+                label: "Savings",
+                data: [10, 11, 15, 12, 9],
+                borderColor: "#80b6f4"
+            }],
+            labels: ["2015", "2016", "2017", "2018", "2019"]
+        };
+        var LineChart3 = new Chart(ctx3, {
+            type: "line", data: data3, options: {
+                pointStyle: "circle",
+                legend: { display: false },
+                scales: { yAxes: [{ display: false, gridLines: { display: false } }], xAxes: [{ display: false, gridLines: { display: false } }] }
+            }
+        });
+
+        // Chart 4
+        var ctx4 = document.getELementById("foregoneSavingsChart");
+        var data4 = {
+            datasets: [{
+                label: "Foregone Savings",
+                data: [10, 14, 16, 13, 20],
+                borderColor: "#fc8658"
+            }],
+            labels: ["2015", "2016", "2017", "2018", "2019"]
+        };
+        var LineChart4 = new Chart(ctx4, {
+            type: "line", data: data4, options: {
+                pointsStyle: "circle",
+                legend: { display: false },
+                scales: { yAxes: [{ display: false, gridLines: { display: false } }], xAxes: [{ display: false, gridLines: { display: false } }] }
+            }
+        });
+        </script>
     </body>
 </html>
