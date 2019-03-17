@@ -472,6 +472,12 @@
                 </div>
             </div>
         </div>
+        <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active"><a href="dashboard.html">Dashboard</a></li>
+            </ol>
+        </div>
         <script>
         // Chart 1
         var ctx = document.getElementById("suppliersChart");
@@ -497,7 +503,7 @@
         var LineChart1 = new Chart(ctx2, { type: "line", data: data2, options: {
             pointStyle: "circle",
             legend: { legend: false },
-            scales: { yAxes: [ { display: false, gridLines: { display: false  }], xAxes: [ { display: flase, gridLines: { display: false } }]} 
+            scales: { yAxes: [ { display: false, gridLines: { display: false  }}], xAxes: [ { display: flase, gridLines: { display: false } }]}
         } });
 
         // Chart 3
